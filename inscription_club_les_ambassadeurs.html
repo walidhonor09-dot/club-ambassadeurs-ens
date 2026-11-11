@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="fr" class="h-full bg-slate-950 text-slate-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adhésion - Club Les Ambassadeurs ENS</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Cinzel', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: {
+                            100: '#fdfbf7',
+                            200: '#f7edcd',
+                            300: '#f0dba3',
+                            400: '#e5c470',
+                            500: '#d4af37', // Master Gold
+                            600: '#b8860b',
+                            700: '#946608',
+                            800: '#754e0d',
+                            900: '#5a3d0f',
+                        },
+                        dark: {
+                            950: '#07080a',
+                            900: '#0f1117',
+                            850: '#151922',
+                            800: '#1b202c',
+                            750: '#232938'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF1C5 0%, #D4AF37 50%, #997415 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-border-glow {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.15), inset 0 0 15px rgba(212, 175, 55, 0.05);
+        }
+
+        .gold-btn-gradient {
+            background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa7c11 100%);
+            transition: all 0.3s ease;
+        }
+
+        .gold-btn-gradient:hover {
+            background: linear-gradient(135deg, #ffffff 0%, #e5c470 50%, #c49419 100%);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .glass-card-dark {
+            background: rgba(15, 17, 23, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* Ambient Glow Backgrounds */
+        .ambient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.18;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased min-h-full flex flex-col justify-between bg-dark-950 text-slate-100 relative overflow-x-hidden selection:bg-gold-500 selection:text-dark-950">
+
+    <!-- Glowing Background Spheres -->
+    <div class="ambient-orb w-[500px] h-[500px] bg-gold-500 top-[-100px] left-1/2 -translate-x-1/2 -z-10"></div>
+    <div class="ambient-orb w-[300px] h-[300px] bg-amber-600 bottom-[-50px] right-[-50px] -z-10"></div>
+
+    <!-- Background Grid Pattern -->
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#1b202c15_1px,transparent_1px),linear-gradient(to_bottom,#1b202c15_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] -z-10"></div>
+
+    <!-- Admin Top Right Toggle Button -->
+    <div class="absolute top-4 right-4 z-50">
+        <button onclick="toggleAdminModal()" class="px-3 py-1.5 rounded-full bg-dark-900/80 border border-gold-500/30 text-gold-400 text-xs font-semibold flex items-center gap-2 hover:bg-gold-500/20 transition-all shadow-lg backdrop-blur-md">
+            <i class="fa-solid fa-user-shield"></i>
+            <span>Espace Admin</span>
+        </button>
+    </div>
+
+    <!-- Header Section -->
+    <header class="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-4 flex flex-col items-center justify-center text-center z-10">
+        
+        <!-- ENS Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-300 text-xs font-semibold uppercase tracking-widest mb-4 backdrop-blur-md">
+            <i class="fa-solid fa-graduation-cap text-gold-400"></i> ÉCOLE NORMALE SUPÉRIEURE (ENS)
+        </div>
+
+        <!-- SVG Emblem Logo (Black & Gold Premium) -->
+        <div class="relative group cursor-default mb-4">
+            <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-b from-dark-800 to-dark-950 border-2 border-gold-500/60 p-2 shadow-2xl flex items-center justify-center transition-transform duration-500 group-hover:scale-105 gold-border-glow">
+                <div class="w-full h-full rounded-full border border-gold-500/30 flex flex-col items-center justify-center relative p-2 bg-dark-900/90">
+                    
+                    <!-- Emblem Graphic -->
+                    <svg class="w-12 h-12 sm:w-14 sm:h-14 text-gold-400" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+                        <!-- Temple Pediment / Columns -->
+                        <path d="M 20 40 L 50 20 L 80 40 Z" stroke-width="2.5" fill="none" />
+                        <line x1="22" y1="42" x2="78" y2="42" stroke-width="2" />
+                        <!-- Columns -->
+                        <line x1="30" y1="43" x2="30" y2="65" stroke-width="2.5" />
+                        <line x1="70" y1="43" x2="70" y2="65" stroke-width="2.5" />
+                        <line x1="24" y1="65" x2="76" y2="65" stroke-width="2" />
+                        <!-- Open Book -->
+                        <path d="M 32 60 Q 50 64 50 54 Q 50 64 68 60 L 68 76 Q 50 80 50 70 Q 50 80 32 76 Z" stroke-width="2" fill="#0f1117" />
+                        <line x1="50" y1="54" x2="50" y2="70" stroke-width="1.5" />
+                        <!-- Feather Quill -->
+                        <path d="M 62 76 Q 78 60 74 46 Q 66 54 58 64" stroke-width="2" stroke="#f0dba3" fill="none" stroke-linecap="round" />
+                    </svg>
+
+                    <span class="font-serif text-[7px] tracking-widest text-gold-400 font-bold uppercase mt-0.5">CLUB</span>
+                </div>
+            </div>
+        </div>
+
+        <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-black tracking-wider uppercase gold-gradient-text drop-shadow-md">
+            Les Ambassadeurs
+        </h1>
+        <p class="text-xs sm:text-sm text-slate-400 font-medium tracking-widest uppercase mt-2">
+            Formulaire Officiel d'Adhésion — Année Universitaire
+        </p>
+    </header>
+
+    <!-- Main Container -->
+    <main class="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow flex flex-col items-center justify-center z-10">
+        
+        <!-- Form Card -->
+        <div class="w-full max-w-lg glass-card-dark rounded-3xl p-6 sm:p-10 shadow-2xl border border-gold-500/30 relative gold-border-glow">
+            
+            <div id="form-header" class="text-center mb-6">
+                <h2 class="font-serif text-xl sm:text-2xl font-bold text-slate-100">Inscription Nouveau Membre</h2>
+                <p class="text-xs text-slate-400 mt-1">Veuillez renseigner vos coordonnées pour rejoindre le club</p>
+            </div>
+
+            <!-- Fee Card (20 DH Gold Highlight) -->
+            <div class="mb-6 p-4 rounded-2xl bg-gradient-to-r from-dark-800 via-dark-850 to-dark-800 border border-gold-500/40 text-slate-100 flex items-center justify-between shadow-lg relative overflow-hidden group">
+                <div class="absolute inset-0 bg-gold-500/5 transition-opacity group-hover:opacity-100 opacity-50"></div>
+                
+                <div class="flex items-center space-x-3.5 z-10">
+                    <div class="w-11 h-11 rounded-xl bg-gold-500/15 border border-gold-500/40 flex items-center justify-center text-gold-400 text-xl shadow-inner">
+                        <i class="fa-solid fa-coins"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-wider text-gold-300">Frais de Cotisation</div>
+                        <div class="text-xs text-slate-400">Adhésion annuelle au club</div>
+                    </div>
+                </div>
+
+                <div class="bg-gold-500/20 border border-gold-500/50 px-4 py-1.5 rounded-xl text-center z-10">
+                    <span class="font-serif text-2xl font-extrabold tracking-tight text-gold-300">20</span>
+                    <span class="text-xs font-bold text-gold-400 ml-0.5">DH</span>
+                </div>
+            </div>
+
+            <!-- Registration Form -->
+            <div id="form-container">
+                <form id="registration-form" class="space-y-4" onsubmit="handleRegistration(event)">
+                    
+                    <!-- Nom & Prénom Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Nom -->
+                        <div>
+                            <label for="nom" class="block text-xs font-bold text-gold-300 uppercase tracking-wider mb-1.5">
+                                Nom <span class="text-gold-400">*</span>
+                            </label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                                    <i class="fa-regular fa-user"></i>
+                                </div>
+                                <input type="text" id="nom" name="nom" required placeholder="Votre nom"
+                                    class="w-full pl-10 pr-4 py-3 rounded-xl bg-dark-900 border border-slate-800 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-gold-500/80 focus:ring-1 focus:ring-gold-500/80 transition-all text-sm font-medium">
+                            </div>
+                        </div>
+
+                        <!-- Prénom -->
+                        <div>
+                            <label for="prenom" class="block text-xs font-bold text-gold-300 uppercase tracking-wider mb-1.5">
+                                Prénom <span class="text-gold-400">*</span>
+                            </label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                                    <i class="fa-solid fa-user-tag"></i>
+                                </div>
+                                <input type="text" id="prenom" name="prenom" required placeholder="Votre prénom"
+                                    class="w-full pl-10 pr-4 py-3 rounded-xl bg-dark-900 border border-slate-800 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-gold-500/80 focus:ring-1 focus:ring-gold-500/80 transition-all text-sm font-medium">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Filière ENS Dropdown -->
+                    <div>
+                        <label for="filiere" class="block text-xs font-bold text-gold-300 uppercase tracking-wider mb-1.5">
+                            Filière ENS <span class="text-gold-400">*</span>
+                        </label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                                <i class="fa-solid fa-book-bookmark"></i>
+                            </div>
+                            <select id="filiere" name="filiere" required onchange="toggleCustomFiliere(this)"
+                                class="w-full pl-10 pr-8 py-3 rounded-xl bg-dark-900 border border-slate-800 text-slate-100 focus:outline-none focus:border-gold-500/80 focus:ring-1 focus:ring-gold-500/80 transition-all text-sm font-medium appearance-none cursor-pointer">
+                                <option value="" disabled selected class="text-slate-500">Sélectionnez votre filière</option>
+                                <option value="Langue & Littérature Arabes (عربي)">Langue & Littérature Arabes (عربي)</option>
+                                <option value="Langue & Littérature Françaises">Langue & Littérature Françaises</option>
+                                <option value="Éducation Physique et Sportive (EPS)">Éducation Physique et Sportive (EPS)</option>
+                                <option value="Sciences de la Vie et de la Terre (SVT)">Sciences de la Vie et de la Terre (SVT)</option>
+                                <option value="Physique - Chimie (PC)">Physique - Chimie (PC)</option>
+                                <option value="Mathématiques (MATH)">Mathématiques (MATH)</option>
+                                <option value="Autre">Autre filière...</option>
+                            </select>
+                            <div class="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-gold-500/70">
+                                <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Champ Filière Personnalisée -->
+                    <div id="custom-filiere-box" class="hidden">
+                        <label for="custom_filiere" class="block text-xs font-bold text-gold-300 uppercase tracking-wider mb-1.5">
+                            Préciser votre filière <span class="text-gold-400">*</span>
+                        </label>
+                        <input type="text" id="custom_filiere" name="custom_filiere" placeholder="Nom de la filière"
+                            class="w-full px-4 py-3 rounded-xl bg-dark-900 border border-slate-800 text-slate-100 focus:outline-none focus:border-gold-500/80 focus:ring-1 focus:ring-gold-500/80 transition-all text-sm font-medium">
+                    </div>
+
+                    <!-- Téléphone / WhatsApp -->
+                    <div>
+                        <label for="telephone" class="block text-xs font-bold text-gold-300 uppercase tracking-wider mb-1.5">
+                            Téléphone / WhatsApp <span class="text-gold-400">*</span>
+                        </label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-emerald-500">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <input type="tel" id="telephone" name="telephone" required placeholder="06XX XX XX XX"
+                                class="w-full pl-10 pr-4 py-3 rounded-xl bg-dark-900 border border-slate-800 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-gold-500/80 focus:ring-1 focus:ring-gold-500/80 transition-all text-sm font-medium">
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" 
+                        class="w-full mt-5 py-3.5 px-6 rounded-xl gold-btn-gradient text-dark-950 font-serif font-black tracking-wider text-sm shadow-xl active:scale-[0.99] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer uppercase">
+                        <i class="fa-solid fa-gem text-dark-950"></i>
+                        <span>REJOINDRE LE CLUB</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Confirmation View -->
+            <div id="confirmation-card" class="hidden py-4 text-center space-y-5">
+                <div class="w-16 h-16 bg-gold-500/20 border-2 border-gold-500 rounded-full flex items-center justify-center mx-auto text-gold-400 text-2xl shadow-xl animate-pulse">
+                    <i class="fa-solid fa-crown"></i>
+                </div>
+                
+                <div>
+                    <h3 class="font-serif text-2xl font-bold text-gold-300">Félicitations !</h3>
+                    <p class="text-xs text-slate-400 mt-1">
+                        Bienvenue au <strong class="text-gold-400">Club Les Ambassadeurs - ENS</strong>
+                    </p>
+                </div>
+
+                <!-- Receipt Card -->
+                <div class="p-5 rounded-2xl bg-dark-900 border border-gold-500/30 text-left space-y-3 shadow-inner">
+                    <div class="flex justify-between items-center pb-2.5 border-b border-slate-800">
+                        <span class="text-xs text-slate-400 uppercase font-semibold">Nom & Prénom:</span>
+                        <span id="res-name" class="font-bold text-slate-100 text-sm"></span>
+                    </div>
+                    <div class="flex justify-between items-center pb-2.5 border-b border-slate-800">
+                        <span class="text-xs text-slate-400 uppercase font-semibold">Filière ENS:</span>
+                        <span id="res-filiere" class="font-semibold text-gold-400 text-sm"></span>
+                    </div>
+                    <div class="flex justify-between items-center pb-2.5 border-b border-slate-800">
+                        <span class="text-xs text-slate-400 uppercase font-semibold">Téléphone:</span>
+                        <span id="res-tel" class="font-medium text-slate-300 text-sm"></span>
+                    </div>
+                    <div class="flex justify-between items-center pt-1">
+                        <span class="text-xs text-slate-400 uppercase font-semibold">Cotisation à régler:</span>
+                        <span class="font-serif font-bold text-gold-400 text-lg">20 DH</span>
+                    </div>
+                </div>
+
+                <div class="text-xs text-slate-300 bg-gold-500/10 border border-gold-500/30 p-3.5 rounded-xl text-left">
+                    <i class="fa-solid fa-circle-info mr-1.5 text-gold-400"></i> Veuillez remettre votre cotisation de <strong>20 DH</strong> au responsable du club lors de la prochaine séance pour recevoir votre carte de membre.
+                </div>
+
+                <button onclick="resetRegistration()" class="px-5 py-2.5 rounded-xl border border-gold-500/40 bg-dark-900 hover:bg-gold-500/10 text-gold-300 text-xs font-bold tracking-wider transition-colors shadow-sm">
+                    Inscrire un autre membre
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Admin Modal / Dashboard -->
+    <div id="admin-modal" class="fixed inset-0 bg-dark-950/90 backdrop-blur-xl z-50 hidden flex flex-col justify-center items-center p-4 sm:p-6 overflow-y-auto">
+        
+        <!-- Auth Box (When not logged in as admin) -->
+        <div id="admin-login-box" class="w-full max-w-md glass-card-dark p-8 rounded-3xl border border-gold-500/30 text-center space-y-5 gold-border-glow">
+            <div class="w-14 h-14 rounded-full bg-gold-500/20 border border-gold-500/40 flex items-center justify-center text-gold-400 text-2xl mx-auto">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <div>
+                <h3 class="font-serif text-xl font-bold text-slate-100">Accès Administration</h3>
+                <p class="text-xs text-slate-400 mt-1">Entrez le mot de passe administrateur</p>
+            </div>
+            <div>
+                <input type="password" id="admin-pass-input" placeholder="Mot de passe admin"
+                    class="w-full px-4 py-3 rounded-xl bg-dark-900 border border-slate-800 text-slate-100 text-center text-sm font-medium focus:outline-none focus:border-gold-500">
+            </div>
+            <div id="admin-error-msg" class="text-xs text-red-400 hidden">Mot de passe incorrect</div>
+            <div class="flex gap-3">
+                <button onclick="toggleAdminModal()" class="w-1/2 py-3 rounded-xl bg-dark-850 text-slate-400 text-xs font-bold uppercase">Fermer</button>
+                <button onclick="checkAdminPassword()" class="w-1/2 py-3 rounded-xl gold-btn-gradient text-dark-950 text-xs font-bold uppercase">Connexion</button>
+            </div>
+        </div>
+
+        <!-- Dashboard View (When logged in) -->
+        <div id="admin-dashboard-box" class="w-full max-w-5xl glass-card-dark p-6 sm:p-8 rounded-3xl border border-gold-500/30 hidden flex flex-col max-h-[90vh] my-auto gold-border-glow">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-6 border-b border-slate-800">
+                <div>
+                    <h3 class="font-serif text-2xl font-bold text-gold-300">Liste des Adhérents Inscrits</h3>
+                    <p class="text-xs text-slate-400">Club Les Ambassadeurs - ENS</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="px-3 py-1.5 rounded-xl bg-gold-500/10 border border-gold-500/30 text-gold-300 text-xs">
+                        Total Inscrits: <strong id="total-count" class="text-white">0</strong>
+                    </div>
+                    <div class="px-3 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs">
+                        Cotisations: <strong id="total-caisse" class="text-white">0 DH</strong>
+                    </div>
+                    <button onclick="logoutAdmin()" class="p-2 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs hover:bg-red-500/20">
+                        <i class="fa-solid fa-power-off"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Search & Tools -->
+            <div class="py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <div class="relative w-full sm:w-72">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-500 text-xs"></i>
+                    <input type="text" id="admin-search-input" onkeyup="filterAdminTable()" placeholder="Rechercher par nom ou filière..."
+                        class="w-full pl-9 pr-4 py-2 rounded-xl bg-dark-900 border border-slate-800 text-xs text-slate-200 focus:outline-none focus:border-gold-500">
+                </div>
+            </div>
+
+            <!-- Members Table -->
+            <div class="overflow-x-auto flex-grow my-2 rounded-xl border border-slate-800 bg-dark-900">
+                <table class="w-full text-left text-xs text-slate-300">
+                    <thead class="bg-dark-850 text-gold-400 uppercase font-serif text-[10px] tracking-wider border-b border-slate-800">
+                        <tr>
+                            <th class="px-4 py-3">#</th>
+                            <th class="px-4 py-3">Nom & Prénom</th>
+                            <th class="px-4 py-3">Filière ENS</th>
+                            <th class="px-4 py-3">WhatsApp / Tel</th>
+                            <th class="px-4 py-3">Date</th>
+                            <th class="px-4 py-3 text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-table-body" class="divide-y divide-slate-800/60 font-medium">
+                        <tr>
+                            <td colspan="6" class="px-4 py-8 text-center text-slate-500">Chargement des inscrits...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pt-4 flex justify-between items-center border-t border-slate-800 text-xs text-slate-400">
+                <span>Synchronisation en temps réel via Firebase</span>
+                <button onclick="toggleAdminModal()" class="px-4 py-2 rounded-xl bg-dark-850 hover:bg-dark-800 text-slate-300 font-bold uppercase text-[10px]">Fermer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w-full max-w-6xl mx-auto px-4 py-6 text-center text-xs text-slate-500 font-sans tracking-widest uppercase z-10">
+        &copy; CLUB LES AMBASSADEURS &bull; ÉCOLE NORMALE SUPÉRIEURE (ENS)
+    </footer>
+
+    <!-- Firebase Script & App Logic -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Firebase Initialization
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'club-ambassadeurs-ens';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' 
+            ? JSON.parse(__firebase_config) 
+            : { apiKey: "demo", authDomain: "demo.firebaseapp.com", projectId: "demo-app" };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        let currentUser = null;
+        let membersData = [];
+
+        // Auth setup
+        async function initAuth() {
+            try {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    const cred = await signInWithCustomToken(auth, __initial_auth_token);
+                    currentUser = cred.user;
+                } else {
+                    const cred = await signInAnonymously(auth);
+                    currentUser = cred.user;
+                }
+                listenToMembers();
+            } catch (err) {
+                console.error("Auth error:", err);
+            }
+        }
+        initAuth();
+
+        // Listen to Firebase Public Firestore Collection
+        function listenToMembers() {
+            if (!currentUser) return;
+            const membersRef = collection(db, 'artifacts', appId, 'public', 'data', 'members');
+            onSnapshot(membersRef, (snapshot) => {
+                membersData = [];
+                snapshot.forEach(docSnap => {
+                    membersData.push({ id: docSnap.id, ...docSnap.data() });
+                });
+                renderAdminTable();
+            }, (error) => {
+                console.error("Error fetching data:", error);
+            });
+        }
+
+        // Global functions on window
+        window.toggleCustomFiliere = function(selectElem) {
+            const customBox = document.getElementById('custom-filiere-box');
+            const customInput = document.getElementById('custom_filiere');
+            if (selectElem.value === 'Autre') {
+                customBox.classList.remove('hidden');
+                customInput.required = true;
+            } else {
+                customBox.classList.add('hidden');
+                customInput.required = false;
+            }
+        };
+
+        window.handleRegistration = async function(e) {
+            e.preventDefault();
+            
+            const nom = document.getElementById('nom').value.trim();
+            const prenom = document.getElementById('prenom').value.trim();
+            let filiere = document.getElementById('filiere').value;
+            const tel = document.getElementById('telephone').value.trim();
+
+            if (filiere === 'Autre') {
+                filiere = document.getElementById('custom_filiere').value.trim();
+            }
+
+            if (!nom || !prenom || !filiere || !tel) return;
+
+            const newMember = {
+                nom: nom,
+                prenom: prenom,
+                filiere: filiere,
+                telephone: tel,
+                createdAt: new Date().toISOString()
+            };
+
+            // Save to Firestore database
+            try {
+                if (currentUser) {
+                    const membersRef = collection(db, 'artifacts', appId, 'public', 'data', 'members');
+                    await addDoc(membersRef, newMember);
+                }
+            } catch (err) {
+                console.error("Error saving record:", err);
+            }
+
+            // Fill receipt
+            document.getElementById('res-name').textContent = `${nom.toUpperCase()} ${prenom}`;
+            document.getElementById('res-filiere').textContent = filiere;
+            document.getElementById('res-tel').textContent = tel;
+
+            // Display view
+            document.getElementById('form-header').classList.add('hidden');
+            document.getElementById('form-container').classList.add('hidden');
+            document.getElementById('confirmation-card').classList.remove('hidden');
+        };
+
+        window.resetRegistration = function() {
+            document.getElementById('registration-form').reset();
+            document.getElementById('custom-filiere-box').classList.add('hidden');
+            document.getElementById('confirmation-card').classList.add('hidden');
+            document.getElementById('form-header').classList.remove('hidden');
+            document.getElementById('form-container').classList.remove('hidden');
+        };
+
+        // Admin System
+        window.toggleAdminModal = function() {
+            const modal = document.getElementById('admin-modal');
+            modal.classList.toggle('hidden');
+        };
+
+        // SHA-256 Hashing helper function
+        async function sha256(message) {
+            const msgBuffer = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        // Target hash for 'admin123'
+        const ADMIN_HASH = '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9';
+
+        window.checkAdminPassword = async function() {
+            const pwd = document.getElementById('admin-pass-input').value;
+            const errorMsg = document.getElementById('admin-error-msg');
+            
+            const pwdHash = await sha256(pwd);
+            if (pwdHash === ADMIN_HASH) {
+                errorMsg.classList.add('hidden');
+                document.getElementById('admin-login-box').classList.add('hidden');
+                document.getElementById('admin-dashboard-box').classList.remove('hidden');
+                renderAdminTable();
+            } else {
+                errorMsg.classList.remove('hidden');
+            }
+        };
+
+        window.logoutAdmin = function() {
+            document.getElementById('admin-pass-input').value = '';
+            document.getElementById('admin-dashboard-box').classList.add('hidden');
+            document.getElementById('admin-login-box').classList.remove('hidden');
+        };
+
+        window.deleteMember = async function(docId) {
+            if (!currentUser) return;
+            try {
+                const memberDoc = doc(db, 'artifacts', appId, 'public', 'data', 'members', docId);
+                await deleteDoc(memberDoc);
+            } catch (err) {
+                console.error("Delete error:", err);
+            }
+        };
+
+        function renderAdminTable(filterQuery = '') {
+            const tbody = document.getElementById('admin-table-body');
+            const totalCount = document.getElementById('total-count');
+            const totalCaisse = document.getElementById('total-caisse');
+
+            let filtered = membersData;
+            if (filterQuery) {
+                filtered = membersData.filter(m => 
+                    (m.nom + ' ' + m.prenom).toLowerCase().includes(filterQuery.toLowerCase()) ||
+                    m.filiere.toLowerCase().includes(filterQuery.toLowerCase()) ||
+                    m.telephone.includes(filterQuery)
+                );
+            }
+
+            totalCount.textContent = membersData.length;
+            totalCaisse.textContent = (membersData.length * 20) + ' DH';
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="px-4 py-8 text-center text-slate-500">Aucun membre trouvé</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = filtered.map((m, idx) => {
+                const dateStr = m.createdAt ? new Date(m.createdAt).toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' }) : '-';
+                return `
+                    <tr class="hover:bg-dark-850/50 transition-colors">
+                        <td class="px-4 py-3 text-slate-500">${idx + 1}</td>
+                        <td class="px-4 py-3 font-bold text-slate-100">${m.nom.toUpperCase()} ${m.prenom}</td>
+                        <td class="px-4 py-3 text-gold-400">${m.filiere}</td>
+                        <td class="px-4 py-3 text-slate-300"><i class="fa-brands fa-whatsapp text-emerald-400 mr-1"></i> ${m.telephone}</td>
+                        <td class="px-4 py-3 text-slate-500">${dateStr}</td>
+                        <td class="px-4 py-3 text-center">
+                            <button onclick="deleteMember('${m.id}')" class="text-red-400 hover:text-red-300 p-1">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        window.filterAdminTable = function() {
+            const query = document.getElementById('admin-search-input').value;
+            renderAdminTable(query);
+        };
+    </script>
+</body>
+</html>
